@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="xApp">
+  <head>
+    <title>UI Project X</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <script src="app/angular.min.js"></script>
+    <script src="app/app.js"></script>
+  </head>
+  <body>
+      <header ng-include="'header.html'"></header>
+      <div class="content">
+      <div ng-controller="TherapyController">
+        <button ng-click="order = 'name'">Sort By Name</button>
+        <button ng-click="order = 'focus'">Sort By Category</button>
+        <button ng-click="order = 'rate'">Sort By Rate</button>
+        <input type="text" ng-model="search" placeholder="Find A Therapist"/>
+        <ul>
+          <li ng-repeat="x in therapists | orderBy: order | filter: search" ng-show="x.available">
+          <h3>{{x.name}} - {{x.rate | currency: '$'}}/Hourly</h3>
+              <div class="remove" ng-click="removeTherapist(x)">x</div>
+              <span class="belt" style="background: {{x.focus}}">{{x.focus}} category</span>
+          </li>
+        </ul>
+     </div>
+     </div>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
